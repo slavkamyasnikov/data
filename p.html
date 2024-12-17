@@ -41,7 +41,7 @@
             if (!checkPassword()) {
                 return;
             }
-
+            if (checkPassword()){
             const newUser = {
                 name: document.getElementById('username').value,
                 email: document.getElementById('email').value,
@@ -56,11 +56,9 @@
         }
 
         // Проверим наличие данных в localStorage при загрузке страницы
-        window.onload = () => {
-            if (localStorage.getItem('newUser')) {
+        window.onload = () => 
                 window.location.href = 'datapost.html';
-            }
-        };
+        }};
     </script>
 </body>
 </html>
