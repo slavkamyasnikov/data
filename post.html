@@ -12,8 +12,11 @@
             <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNW5hZHZvcTh3d2g3ODZvNTVjc3F6YTR1bXV5cXppbXptbnc4N3J6MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YQitE4YNQNahy/giphy.webp" alt="giphy logo" />
         </section>
         <form>
+            <h2>password:</h2>
             <input type="text" id="password" placeholder="perezdacha" name="name" required>
+            <h2>email:</h2>
             <input type="email" id="email" placeholder="ispavlov@mail.ru" name="email" required>
+            <h2>username:</h2>
             <input type="text" id="username" placeholder="С уважением, И.С.Павлов." name="name" required>
             <button id="btn" type="submit" onclick="saveData(event);">?</button>
         </form>
@@ -47,10 +50,8 @@
                 email: document.getElementById('email').value,
                 pas: document.getElementById('password').value
             };
-
             // Сохранить данные в localStorage
             window.localStorage.setItem('newUser', JSON.stringify(newUser));
-
             // Перенаправление на страницу с данными из localStorage
             window.location.href = 'datapost.html';
         }};
