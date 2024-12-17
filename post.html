@@ -37,7 +37,6 @@
                 return false;
             }
         }
-
         function saveData(event) {
             event.preventDefault(); // Отменяем стандартное поведение формы
 
@@ -45,16 +44,25 @@
                 return;
             }
 
-            const newUser = {name: document.getElementById('username').value,
+            const newUser = {
+                name: document.getElementById('username').value,
                 email: document.getElementById('email').value,
-                pas: document.getElementById('password').value};
+                pas: document.getElementById('password').value
+            };
+
+            // Сохранить данные в localStorage
             window.localStorage.setItem('newUser', JSON.stringify(newUser));
-            window.location.href = 'datapost.html';
+
+            // Перенаправление на страницу с данными из localStorage
+            window.location.href = 'show_data.html';
         }
+
+        // Проверим наличие данных в localStorage при загрузке страницы
         window.onload = () => {
             if (localStorage.getItem('newUser')) {
-                window.location.href = 'datapost.html';
+                window.location.href = 'show_data.html';
             }
+        };
 </script>
 </body>
 </html>
