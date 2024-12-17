@@ -37,7 +37,6 @@
 
         function saveData(event) {
             event.preventDefault(); // Отменяем стандартное поведение формы
-
             if (!checkPassword()) {
                 return;
             }
@@ -53,8 +52,6 @@
 
             // Перенаправление на страницу с данными из localStorage
             window.location.href = 'datapost.html';
-                window.onload = () => 
-                window.location.href = 'datapost.html';
         }};
     </script>
 </body>
