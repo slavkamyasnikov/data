@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <title>Вывод данных из Local Storage</title>
+</head>
+<body>
+    <h1>Данные из Local Storage:</h1>
+    
+    <!-- Здесь будут выводиться данные -->
+    <ul id="data-list"></ul>
+
+    <script>
+        // Функция для получения всех ключей из localStorage
+        function getAllKeysFromLocalStorage() {
+            let keys = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                keys.push(localStorage.key(i));
+            }
+            return keys;
+        }
+        
+        // Функция для извлечения и отображения данных
+        function displayData() {
+            const dataList = document.getElementById('data-list');
+            
+            // Получаем все ключи из localStorage
+            const keys = getAllKeysFromLocalStorage();
+            
+            // Проходимся по каждому ключу и добавляем данные в список
+            keys.forEach(key => {
+                const value = localStorage.getItem(key);
+                
+                // Если значение существует, создаем элемент списка и добавляем его
+                if (value !== null) {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${key}: ${value}`;
+                    dataList.appendChild(listItem);
+                }
+            });
+        }
+        
+        // Вызываем функцию при загрузке страницы
+        window.onload = displayData;
+    </script>
+</body>
+</html>
