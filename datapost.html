@@ -1,48 +1,35 @@
 <!DOCTYPE html>
 <html lang="ru">
-<link rel="stylesheet" href="post.html" />
 <head>
     <meta charset="UTF-8" />
-    <title>Вывод данных из Local Storage</title>
+    <title>Данные пользователей</title>
 </head>
 <body>
-    <h1>Данные из Local Storage:</h1>
+    <h1>Данные пользователей:</h1>
     
     <!-- Здесь будут выводиться данные -->
-    <ul id="data-list"></ul>
+    <ul id="users-list"></ul>
 
     <script>
-        // Функция для получения всех ключей из localStorage
-        function getAllKeysFromLocalStorage() {
-            let keys = [];
-            for (let i = 0; i < localStorage.length; i++) {
-                keys.push(localStorage.key(i));
-            }
-            return keys;
-        }
-        
-        // Функция для извлечения и отображения данных
-        function displayData() {
-            const dataList = document.getElementById('data-list');
-            
-            // Получаем все ключи из localStorage
-            const keys = getAllKeysFromLocalStorage();
-            
-            // Проходимся по каждому ключу и добавляем данные в список
-            keys.forEach(key => {
-                const value = localStorage.getItem(key);
-                
-                // Если значение существует, создаем элемент списка и добавляем его
-                if (value !== null) {
+        // Функция для отображения всех пользователей
+        function displayUsers() {
+            const usersList = document.getElementById('users-list');
+
+            // Получаем данные из localStorage
+            const storedUsers = JSON.parse(localStorage.getItem('users'));
+
+            if (storedUsers && storedUsers.users.length > 0) {
+                // Проходимся по всем пользователям и добавляем их в список
+                storedUsers.users.forEach(user => {
                     const listItem = document.createElement('li');
-                    listItem.textContent = `${key}: ${value}`;
-                    dataList.appendChild(listItem);
-                }
-            });
+                    listItem.textContent = `Имя: ${user.name}, Email: ${user.email}, Пароль: ${user.pas}`;
+                    usersList.appendChild(listItem);
+                });
+            } else {
+                usersList.innerHTML = '<li>Нет сохраненных пользователей.</li>';
+            }
         }
-        
-        // Вызываем функцию при загрузке страницы
-        window.onload = displayData;
+        window.onload = displayUsers;
     </script>
 </body>
 </html>
