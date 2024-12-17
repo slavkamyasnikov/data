@@ -2,53 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <link href="data.html" />
-    <script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js"></script>
     <title></title>
 </head>
 <body>
     <div class="container">
         <section class="content">
             <h1 class="text"></h1>
-            <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNW5hZHZvcTh3d2g3ODZvNTVjc3F6YTR1bXV5cXppbXptbnc4N3J6MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YQitE4YNQNahy/giphy.webp"/>
+            <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNW5hZHZvcTh3d2g3ODZvNTVjc3F6YTR1bXV5cXppbXptbnc4N3J6MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YQitE4YNQNahy/giphy.webp" alt="giphy logo" />
         </section>
-        <form action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="f3f2bee3-64af-4e4c-8923-4322e1cbafc3" />
-            <h2>password.</h2>
+        <form>
             <input type="text" id="password" placeholder="perezdacha" name="name" required>
-            <h2>Email.</h2>
             <input type="email" id="email" placeholder="ispavlov@mail.ru" name="email" required>
-            <h2>username.</h2>
             <input type="text" id="username" placeholder="С уважением, И.С.Павлов." name="name" required>
-            <input type="hidden" name="redirect" value="file:///D:/Wondershare/Download/data.html">
-            <button id="btn" type="submit" onclick="checkPassword()">?</button>
+            <button id="btn" type="submit" onclick="saveData(event);">?</button>
         </form>
     </div>
-
-<script>
+    <script>
         function checkPassword() {
             const passwordInput = document.getElementById('password');
             const password = passwordInput.value;
-            
+
             // Регулярное выражение для проверки пароля
             const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})");
 
             if (strongRegex.test(password)) {
+                // Пароль соответствует требованиям
                 return true;
-                const newuser={name=document.getElementById('username');
-                email=document.getElementById('email');
-                pas=password;}
-                localStorage.setItem(name,JSON.stringify(newuser));
-                document.location.href="file:///D:/Wondershare/Download/data.html"
-                window.location.replace('site')
             } else {
-                alert('Пароль слишком прост.');
+                alert('Пароль должен содержать буквы разного регистра и цифры, длиной от 8 символов.');
                 return false;
             }
         }
-    }
-</script>
+
+        function saveData(event) {
+            event.preventDefault(); // Отменяем стандартное поведение формы
+
+            if (!checkPassword()) {
+                return;
+            }
+
+            const newUser = {
+                name: document.getElementById('username').value,
+                email: document.getElementById('email').value,
+                pas: document.getElementById('password').value
+            };
+
+            // Сохранить данные в localStorage
+            window.localStorage.setItem('newUser', JSON.stringify(newUser));
+
+            // Перенаправление на страницу с данными из localStorage
+            window.location.href = 'show_data.html';
+        }
+
+        // Проверим наличие данных в localStorage при загрузке страницы
+        window.onload = () => {
+            if (localStorage.getItem('newUser')) {
+                window.location.href = 'datapost.html';
+            }
+        };
+    </script>
 </body>
 </html>
