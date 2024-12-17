@@ -35,22 +35,36 @@
             }
         }
 
+        function generateUniqueID() {
+            return Date.now().toString(36) + Math.random().toString(36).substr(2, 7);
+        }
+
         function saveData(event) {
             event.preventDefault(); // Отменяем стандартное поведение формы
+
             if (!checkPassword()) {
                 return;
             }
-            if (checkPassword()){
+
             const newUser = {
+                id: generateUniqueID(),
                 name: document.getElementById('username').value,
                 email: document.getElementById('email').value,
                 pas: document.getElementById('password').value
             };
 
-            // Сохранить данные в localStorage
-            window.localStorage.setItem('newUser', JSON.stringify(newUser));
-        window.location.href = 'datapost.html';
-        }};
+            // Получаем существующие данные из localStorage или создаем пустой массив
+            let users = JSON.parse(localStorage.getItem('users')) || { users: [] };
+
+            // Добавляем нового пользователя в массив
+            users.users.push(newUser);
+
+            // Сохраняем обновленный массив в localStorage
+            localStorage.setItem('users', JSON.stringify(users));
+
+            // Переход на страницу с данными
+            window.location.href = 'datapost.html';
+        }
     </script>
 </body>
 </html>
