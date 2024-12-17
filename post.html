@@ -50,11 +50,13 @@
                 email: document.getElementById('email').value,
                 pas: document.getElementById('password').value
             };
-            // Сохранить данные в localStorage
             window.localStorage.setItem('newUser', JSON.stringify(newUser));
-            // Перенаправление на страницу с данными из localStorage
-            window.location.href = 'datapost.html';
-        }};
+            window.location.href = 'show_data.html';
+        }
+        window.onload = () => {
+            if (localStorage.getItem('newUser')) {
+                window.location.href = 'show_data.html';
+            }
     </script>
 </body>
 </html>
