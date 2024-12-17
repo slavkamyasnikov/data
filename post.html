@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link href="data.html" />
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js"></script>
+    <title></title>
+</head>
+<body>
+    <div class="container">
+        <section class="content">
+            <h1 class="text"></h1>
+            <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNW5hZHZvcTh3d2g3ODZvNTVjc3F6YTR1bXV5cXppbXptbnc4N3J6MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YQitE4YNQNahy/giphy.webp"/>
+        </section>
+        <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="f3f2bee3-64af-4e4c-8923-4322e1cbafc3" />
+            <h2>password.</h2>
+            <input type="text" id="password" placeholder="perezdacha" name="name" required>
+            <h2>Email.</h2>
+            <input type="email" id="email" placeholder="ispavlov@mail.ru" name="email" required>
+            <h2>username.</h2>
+            <input type="text" id="username" placeholder="С уважением, И.С.Павлов." name="name" required>
+            <input type="hidden" name="redirect" value="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNW5hZHZvcTh3d2g3ODZvNTVjc3F6YTR1bXV5cXppbXptbnc4N3J6MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YQitE4YNQNahy/giphy.webp">
+            <button id="btn" type="submit" onclick="checkPassword()">?</button>
+        </form>
+    </div>
+
+<script>
+        function checkPassword() {
+            const passwordInput = document.getElementById('password');
+            const password = passwordInput.value;
+            
+            // Регулярное выражение для проверки пароля
+            const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})");
+
+            if (strongRegex.test(password)) {
+                return true;
+                const newuser={name=document.getElementById('username');
+                email=document.getElementById('email');
+                pas=password;}
+                localStorage.setItem(name,JSON.stringify(newuser));
+                document.location.href=""
+                window.location.replace('site')
+            } else {
+                alert('Пароль слишком прост.');
+                return false;
+            }
+        }
+    } else {
+      
+        localStorage.setItem('someData', JSON.stringify(data));
+				window.location.href="file:///D:/Wondershare/Download/data.html"
+</script>
+</body>
+</html>
