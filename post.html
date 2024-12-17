@@ -22,7 +22,7 @@
             <input type="email" id="email" placeholder="ispavlov@mail.ru" name="email" required>
             <h2>username.</h2>
             <input type="text" id="username" placeholder="С уважением, И.С.Павлов." name="name" required>
-            <input type="hidden" name="redirect" value="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNW5hZHZvcTh3d2g3ODZvNTVjc3F6YTR1bXV5cXppbXptbnc4N3J6MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YQitE4YNQNahy/giphy.webp">
+            <input type="hidden" name="redirect" value="file:///D:/Wondershare/Download/data.html">
             <button id="btn" type="submit" onclick="checkPassword()">?</button>
         </form>
     </div>
@@ -41,17 +41,14 @@
                 email=document.getElementById('email');
                 pas=password;}
                 localStorage.setItem(name,JSON.stringify(newuser));
-                document.location.href=""
+                document.location.href="file:///D:/Wondershare/Download/data.html"
                 window.location.replace('site')
             } else {
                 alert('Пароль слишком прост.');
                 return false;
             }
         }
-    } else {
-      
-        localStorage.setItem('someData', JSON.stringify(data));
-				window.location.href="file:///D:/Wondershare/Download/data.html"
+    }
 </script>
 </body>
 </html>
